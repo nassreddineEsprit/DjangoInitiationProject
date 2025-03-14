@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <table border="1" align="center">
+        <caption>Liste des cours</caption>
+        <tr>
+            <th>Code</th>
+            <th>Titre</th>
+            <th>Categorie</th>
+            <th>Date de publication</th>
+            <th>Enseignant</th>
+            {% if user.is_authenticated %}
+                <th>Actions</th>
+            {% endif %}
+        </tr>
+
+        {% for cours in cours %}
+            <tr>
+                <td>{{ cours.code }}</td>
+                <td>{{ cours.titre }}</td>
+                <td>{{ cours.categorie }}</td>
+                <td>{{ cours.date_publication }}</td>
+                <td>{{ cours.tuteur }}</td>
+                {% if user.is_authenticated %}
+                <td><a href="{% url 'update' cours.code %}">Update</a></td>
+                <td><a href="{% url 'delete' cours.code %}">Delete</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

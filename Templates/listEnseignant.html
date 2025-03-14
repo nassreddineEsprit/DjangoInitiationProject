@@ -1,0 +1,20 @@
+<table border="1" align="center">
+    <caption>List of enseignants</caption>
+<tr>
+    <td>enseignant</td>
+    <td>cours</td>
+    <td></td>
+</tr>
+{% for e in enseignant %}
+<tr>
+    <td>{{e.username}}</td>
+    {% for c in e.cours.all %}
+
+    <td>{{c.titre}}</td>
+    {% endfor %}
+
+
+</tr>
+{% endfor %}
+
+</table>
